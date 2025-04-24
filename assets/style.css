@@ -11,3 +11,38 @@ body {
     background: black !important;
     color: white !important;
 }
+
+.my-form {
+    position: relative;
+    background: black; /* Set the inner background color */
+    border-radius: 10px; /* Smooth corners for better aesthetics */
+    overflow: hidden; /* Prevent border animation overflow */
+    z-index: 1;
+}
+
+
+.my-form::before {
+content: "";
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+background: linear-gradient(45deg, #ff0099, #4939ff, #00ccff, #ff0099);
+background-size: 300%;
+border-radius: inherit; /* Match the parent border-radius */
+z-index: -1;
+animation: borderAnimation 5s linear infinite;
+}
+
+@keyframes borderAnimation {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+} 

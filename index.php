@@ -37,7 +37,7 @@
                     </form>
                 </div>
 
-                <div class="form-card mt-4 border p-5 rounded-5">
+                <div class="form-card mt-4 border p-4 rounded-2 my-form">
                     <h2>Login</h2>
                     <form action="process.php" method="POST">
                         <input type="hidden" name="action" value="login">
@@ -49,9 +49,9 @@
                             <label for="login-password" class="form-label">Password</label>
                             <input type="password" id="login-password" name="password" class="form-control" required>
                         </div>
-                        <div class="mt-3 links">
-                            <a href="">Forgot Password</a>
-                            <a href="#">Sign Up</a>
+                        <div class="mt-3 links d-flex justify-content-between">
+                            <a href="#" class="text-dark">Forgot Password</a>
+                            <a href="#" class="text-dark">Sign Up</a>
                         </div>
                         <div class="submit-btn mt-3">
                             <button type="submit" class="btn btn-success">Login</button>
