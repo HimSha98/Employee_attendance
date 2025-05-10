@@ -1,88 +1,60 @@
-<!-- <?php
-// session_start();
-// include 'db.php';
-
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: index.php");
-//     exit;
-// }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Welcome to your Dashboard</h1>
-    <form action="process.php" method="POST">
-        <input type="hidden" name="action" value="mark_attendance">
-        <button type="submit">Mark Attendance</button>
-    </form>
-
-    <h2>Your Attendance Records</h2>
-    <ul>
-        <?php
-        // $user_id = $_SESSION['user_id'];
-        // $result = $conn->query("SELECT marked_at FROM attendance WHERE user_id = $user_id ORDER BY marked_at DESC");
-        // while ($row = $result->fetch_assoc()) {
-        //     echo "<li>{$row['marked_at']}</li>";
-        // }
-        ?>
-    </ul>
-
-    <a href="logout.php">Logout</a>
-</body>
-</html> -->
-
 <?php
+include 'database/db.php';
 session_start();
-include 'db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit;
+    header('Location: index.php');
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
+$date = date('Y-m-d');
 
-// Get today's date
-$today = date("Y-m-d");
+$query = "SELECT * FROM attendance WHERE user_id = ? AND date = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("is", $user_id, $date);
+$stmt->execute();
+$result = $stmt->get_result();
+$attendance = $result->fetch_assoc();
 
-// Check if the user has already marked attendance today
-$attendance_check_query = $conn->prepare("SELECT COUNT(*) as count FROM attendance WHERE user_id = ? AND DATE(marked_at) = ?");
-$attendance_check_query->bind_param("is", $user_id, $today);
-$attendance_check_query->execute();
-$attendance_check_result = $attendance_check_query->get_result();
-$attendance_data = $attendance_check_result->fetch_assoc();
-$has_marked_attendance = $attendance_data['count'] > 0;
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Welcome to your Dashboard</h1>
 
-    <?php if ($has_marked_attendance): ?>
-        <p>You have already marked your attendance for today.</p>
-    <?php else: ?>
-        <form action="process.php" method="POST">
-            <input type="hidden" name="action" value="mark_attendance">
-            <button type="submit">Mark Attendance</button>
-        </form>
-    <?php endif; ?>
-
-    <h2>Your Attendance Records</h2>
-    <ul>
-        <?php
-        $result = $conn->query("SELECT marked_at FROM attendance WHERE user_id = $user_id ORDER BY marked_at DESC");
-        while ($row = $result->fetch_assoc()) {
-            echo "<li>{$row['marked_at']}</li>";
-        }
-        ?>
-    </ul>
-
-    <a href="logout.php">Logout</a>
-</body>
-</html>
+<?php include 'includes/header.php'; ?>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center min-vh-100">
+            <div class="col-3"></div>
+            <div class="col-6 my-5">
+                <h1 class="text-center">Welcome, <span class="text-uppercase"><?= $_SESSION['username']; ?></span></h1>
+                <div class="attendance-mark-container border-1 rounded-2 border-light bg-white p-3 position-relative">
+                    <?php if (!$attendance): ?>
+                        <form action="mark_attendance.php" method="POST" class="attendance_form mt-4">
+                            <div class="">
+                                <h4 class="text-dark">Happy Good Morning  <i class="text-uppercase"><?= $_SESSION['username']; ?></i></h4>
+                                <h5 class="text-dark check-head">
+                                    Dear Sir, Register Your Check-In Time :
+                                </h5>
+                                <input type="hidden" name="type" value="check_in">
+                                <button class="btn btn-sm btn-success p-3 py-2 w-25 mt-3" type="submit">Check In</button>
+                            </div>
+                        </form>
+                    <?php elseif (!$attendance['check_out_time']): ?>
+                        <form action="mark_attendance.php" method="POST" class="attendance_form mt-4">
+                            <div class="">
+                                <h5 class="text-dark check-head">
+                                    Dear Sir, Register Your Check-Out Time :
+                                </h5>
+                                <input type="hidden" name="type" value="check_out">
+                                <button class="btn btn-sm btn-warning p-3 py-2 w-25 mt-3" type="submit">Check Out</button>
+                            </div>
+                        </form>
+                    <?php else: ?>
+                        <h4 class="text-dark">Good Bye Stay Blessed  <i class="text-uppercase"><?= $_SESSION['username']; ?></i></h4>
+                        <p>Attendance already marked for today!</p>
+                    <?php endif; ?>
+                    <a href="logout.php" class="mt-1 me-2 position-absolute top-0 end-0"><i class="fa-solid fa-power-off text-danger fs-5" title="LOGGED OUT"></i></a>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+<?php include 'includes/footer.php'; ?>

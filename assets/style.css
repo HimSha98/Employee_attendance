@@ -14,9 +14,9 @@ body {
 
 .my-form {
     position: relative;
-    background: black; /* Set the inner background color */
-    border-radius: 10px; /* Smooth corners for better aesthetics */
-    overflow: hidden; /* Prevent border animation overflow */
+    background: black;
+    border-radius: 10px;
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -30,7 +30,7 @@ right: -2px;
 bottom: -2px;
 background: linear-gradient(45deg, #ff0099, #4939ff, #00ccff, #ff0099);
 background-size: 300%;
-border-radius: inherit; /* Match the parent border-radius */
+border-radius: inherit;
 z-index: -1;
 animation: borderAnimation 5s linear infinite;
 }
@@ -45,4 +45,9 @@ animation: borderAnimation 5s linear infinite;
 100% {
     background-position: 0% 50%;
 }
-} 
+}
+
+.check-head:hover {
+    text-decoration: underline;
+    text-decoration-color: #00ccff;
+}
