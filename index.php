@@ -1,4 +1,5 @@
 <?php
+include 'database/db.php';
 session_start();
 if (isset($_SESSION['user_id'])) {
     header('Location: dashboard.php');
@@ -56,7 +57,7 @@ if (isset($_SESSION['user_id'])) {
                         </div>
 
                         <div class="mt-3 links d-flex justify-content-between">
-                            <a href="#" class="text-dark" id="forgot-password-link">Forgot Password</a>
+                            <a href="admin.php" class="text-dark">Admin Login</a>
                             <a href="#" class="text-dark" id="sign-up-link">Sign Up</a>
                         </div>
 
