@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include 'database/db.php';
 session_start();
 
@@ -17,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $username;
         header('Location: dashboard.php');
     } else {
-        echo "Invalid credentials!";
+        // echo "Invalid credentials!";
+        header("Location: http://localhost/employee_attendance/login-error.php");
     }
 
     $stmt->close();
