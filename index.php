@@ -9,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
 
 <?php include 'includes/header.php'; ?>
     <div class="container">
-        <div class="row d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row d-flex justify-content-center min-vh-100">
             <div class="col-4"></div>
             <div class="col-4 my-5">
                 <div class="form-card d-none mt-4 border p-4 rounded-2 my-form" id="register-form">

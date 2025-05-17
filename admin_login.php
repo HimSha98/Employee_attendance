@@ -2,8 +2,8 @@
 session_start();
 
 // Define the admin credentials
-$admin_username = "hansraj";
-$admin_password = password_hash("hansraj", PASSWORD_DEFAULT); // Change "your_secure_password" to your desired password
+$admin_username = "devraj";
+$admin_password = password_hash("devraj_123", PASSWORD_DEFAULT); // Change "your_secure_password" to your desired password
 
 // Handle login form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
