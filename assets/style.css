@@ -12,16 +12,21 @@ body {
     color: white !important;
 }
 
-.my-form {
+.my-form,
+.admin-form,
+.attendance-mark-container {
     position: relative;
     background: black;
     border-radius: 10px;
     overflow: hidden;
     z-index: 1;
+    border: 5px solid pink;
 }
 
 
-.my-form::before {
+.my-form::before,
+.admin-form::before,
+.attendance-mark-container::before {
 content: "";
 position: absolute;
 top: -2px;

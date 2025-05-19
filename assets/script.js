@@ -18,3 +18,10 @@ document.getElementById('back-to-login').addEventListener('click', function(even
     document.getElementById('register-form').classList.add('d-none');
     document.getElementById('login-form').classList.remove('d-none');
 });
+
+// HS CLEAR HISTORY ONLY ON INDEX.PHP
+// if (window.location.pathname.endsWith("index.php")) {
+//     window.onload = function () {
+//         window.history.replaceState(null, null, window.location.href);
+//     };
+// }

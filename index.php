@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="row d-flex justify-content-center min-vh-100">
             <div class="col-4"></div>
             <div class="col-4 my-5">
-                <div class="form-card d-none mt-4 border p-4 rounded-2 my-form" id="register-form">
+                <div class="form-card d-none mt-4 p-4 rounded-2 my-form" id="register-form">
                     <h2>Register</h2>
                     <form action="register.php" method="POST">
                         <input type="hidden" name="action" value="register">
@@ -41,8 +41,8 @@ if (isset($_SESSION['user_id'])) {
                 </div>
 
                 <!-- Login Form -->
-                <div class="form-card mt-4 border p-4 rounded-2 my-form" id="login-form">
-                    <h2>Login</h2>
+                <div class="form-card mt-4 p-4 rounded-2 my-form" id="login-form">
+                    <h2>User Login</h2>
                     <form action="login.php" method="POST">
                         <input type="hidden" name="action" value="login">
 

@@ -22,21 +22,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'includes/header.php'; ?>
-<div class="container mt-5">
-    <h1 class="text-center">Admin Login</h1>
+<div class="container ">
     <?php if (isset($error_message)): ?>
         <div class="alert alert-danger"><?php echo $error_message; ?></div>
     <?php endif; ?>
-    <form method="POST" class="mx-auto" style="max-width: 400px;">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" id="username" name="username" class="form-control" required>
+    <div class="row d-flex justify-content-center min-vh-100">
+        <div class="col-4"></div>
+        <div class="col-4 my-5">
+            <div class="mt-4 p-4 rounded-2 admin-form">
+                <h2>Admin Login</h2>
+                <form method="POST" class="" style="max-width: 400px;">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="mt-3 links d-flex justify-content-between">
+                        <a href="index.php" class="text-dark">User Login</a>
+                    </div>
+                    <div class="submit-btn mt-3">
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-    </form>
+        <div class="col-4"></div>
+    </div>
 </div>
 <?php include 'includes/footer.php'; ?>
