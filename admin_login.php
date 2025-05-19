@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="alert alert-danger"><?php echo $error_message; ?></div>
     <?php endif; ?>
     <div class="row d-flex justify-content-center min-vh-100">
-        <div class="col-4"></div>
-        <div class="col-4 my-5">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 my-5">
             <div class="mt-4 p-4 rounded-2 admin-form">
                 <h2>Admin Login</h2>
-                <form method="POST" class="" style="max-width: 400px;">
+                <form method="POST" class="">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username" class="form-control" required>
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
         </div>
-        <div class="col-4"></div>
+        <div class="col-lg-3 col-md-2"></div>
     </div>
 </div>
 <?php include 'includes/footer.php'; ?>

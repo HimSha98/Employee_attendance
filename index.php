@@ -10,8 +10,8 @@ if (isset($_SESSION['user_id'])) {
 <?php include 'includes/header.php'; ?>
     <div class="container">
         <div class="row d-flex justify-content-center min-vh-100">
-            <div class="col-4"></div>
-            <div class="col-4 my-5">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 my-5">
                 <div class="form-card d-none mt-4 p-4 rounded-2 my-form" id="register-form">
                     <h2>Register</h2>
                     <form action="register.php" method="POST">
@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id'])) {
                     </form>
                 </div>
             </div>
-            <div class="col-4"></div>
+            <div class="col-lg-3 col-md-2"></div>
         </div>
     </div>
 <?php include 'includes/footer.php'; ?>

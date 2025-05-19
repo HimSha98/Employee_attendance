@@ -14,7 +14,8 @@ body {
 
 .my-form,
 .admin-form,
-.attendance-mark-container {
+.attendance-mark-container,
+.access-denied-popup {
     position: relative;
     background: black;
     border-radius: 10px;
@@ -26,7 +27,8 @@ body {
 
 .my-form::before,
 .admin-form::before,
-.attendance-mark-container::before {
+.attendance-mark-container::before,
+.access-denied-popup::before {
 content: "";
 position: absolute;
 top: -2px;
