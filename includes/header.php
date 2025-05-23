@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="py-3 head-bg bg-light">
+    <nav class="py-3 head-bg">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6 d-flex align-items-center justify-content-center">

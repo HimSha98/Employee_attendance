@@ -35,7 +35,8 @@ top: -2px;
 left: -2px;
 right: -2px;
 bottom: -2px;
-background: linear-gradient(45deg, #ff0099, #4939ff, #00ccff, #ff0099);
+/* background: linear-gradient(45deg, #ff0099, #4939ff, #00ccff, #ff0099); */
+background: brown;
 background-size: 300%;
 border-radius: inherit;
 z-index: -1;
@@ -61,7 +62,8 @@ animation: borderAnimation 5s linear infinite;
 
 /* HS HEADER SECTION STARTS */
 .head-bg {
-    background: linear-gradient(90deg, #FFD700, #FF69B4, #8A2BE2);
+    /* background: linear-gradient(90deg, #FFD700, #FF69B4, #8A2BE2); */
+    background: brown;
 }
 .scrolling-text {
     white-space: nowrap;

@@ -17,6 +17,7 @@ $user_id = $_SESSION['user_id'];
 $filters = [
     'day' => $_GET['day'] ?? null,
     'date' => $_GET['date'] ?? null,
+    'month' => $_GET['month'] ?? null,
     'year' => $_GET['year'] ?? null,
 ];
 
@@ -35,6 +36,11 @@ if ($filters['date']) {
     $params[] = $filters['date'];
     $types .= "s";
 }
+if ($filters['month']) {
+    $query .= " AND MONTH(date) = ?";
+    $params[] = $filters['month'];
+    $types .= "i";
+}
 if ($filters['year']) {
     $query .= " AND YEAR(date) = ?";
     $params[] = $filters['year'];
@@ -51,7 +57,7 @@ $attendance_records = $result->fetch_all(MYSQLI_ASSOC);
 <?php include 'includes/header.php'; ?>
 <div class="container">
     <h1 class="mt-4">My Attendance</h1>
-    <form class="row g-3 my-4">
+    <form class="row g-3 my-4" method="GET" action="my_attendance.php">
         <div class="col-md-3">
             <label for="day" class="form-label">Filter by Day</label>
             <select id="day" name="day" class="form-select">
@@ -66,6 +72,17 @@ $attendance_records = $result->fetch_all(MYSQLI_ASSOC);
             </select>
         </div>
         <div class="col-md-3">
+            <label for="month" class="form-label">Filter by Month</label>
+            <select id="month" name="month" class="form-select">
+                <option value="">Select Month</option>
+                <?php for ($m = 1; $m <= 12; $m++): ?>
+                    <option value="<?= $m; ?>" <?= isset($filters['month']) && $filters['month'] == $m ? 'selected' : ''; ?>>
+                        <?= date('F', mktime(0, 0, 0, $m, 1)); ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+        </div>
+        <div class="col-md-3">
             <label for="date" class="form-label">Filter by Date</label>
             <input type="date" id="date" name="date" class="form-control">
         </div>
@@ -73,8 +90,8 @@ $attendance_records = $result->fetch_all(MYSQLI_ASSOC);
             <label for="year" class="form-label">Filter by Year</label>
             <input type="number" id="year" name="year" class="form-control" placeholder="2025">
         </div>
-        <div class="col-md-3 align-self-end">
-            <button type="submit" class="btn btn-primary w-100">Filter</button>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary mt-3">Filter</button>
         </div>
     </form>
     <table class="table table-striped">

@@ -66,19 +66,19 @@ if ($isLoggedIn) {
     <?php else: ?>
         <?php if ($isLoggedIn && !$attendance): ?>
             <form action="mark_attendance.php" method="POST" class="attendance_form mt-4">
-                <h4 class="text-dark">Happy Good Morning <i class="text-uppercase"><?= $username; ?></i></h4>
-                <h5 class="text-dark check-head">Dear Sir, Register Your Check-In Time:</h5>
+                <h4 class="text-white">Happy Good Morning <i class="text-uppercase"><?= $username; ?></i></h4>
+                <h5 class="text-white check-head">Dear Sir, Register Your Check-In Time:</h5>
                 <input type="hidden" name="type" value="check_in">
                 <button class="btn btn-sm btn-success p-3 py-2 w-25 mt-3" type="submit">Check In</button>
             </form>
         <?php elseif (!$attendance['check_out_time']): ?>
             <form action="mark_attendance.php" method="POST" class="attendance_form mt-4">
-                <h5 class="text-dark check-head">Dear Sir, Register Your Check-Out Time:</h5>
+                <h5 class="text-white check-head">Dear Sir, Register Your Check-Out Time:</h5>
                 <input type="hidden" name="type" value="check_out">
                 <button class="btn btn-sm btn-warning p-3 py-2 w-25 mt-3" type="submit">Check Out</button>
             </form>
         <?php else: ?>
-            <h4 class="text-dark">Goodbye! Stay Blessed <i class="text-uppercase"><?= $username; ?></i></h4>
+            <h4 class="text-white">Goodbye! Stay Blessed <i class="text-uppercase"><?= $username; ?></i></h4>
             <p>Attendance already marked for today!</p>
         <?php endif; ?>
         <!-- Add View Attendance Button -->
